@@ -8,11 +8,11 @@ $mahasiswa=query("SELECT * FROM mahasiswa")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Daftar Mahasiswa</title>
 </head>
 <body>
     <h1>Daftar Mahasiswa</h1>
-    <a href="tambah.php">Tambah Data Mahasiswa</a>
+    <a href="tambah_data.php">Tambah Data Mahasiswa</a>
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
             <th>No. </th>
@@ -23,9 +23,9 @@ $mahasiswa=query("SELECT * FROM mahasiswa")
             <th>Gambar </th>
             <th>Aksi </th>
         </tr>
-<?php $i=1 ?>
-<!-- kita buat contoh data static -->
-<?php foreach ($mahasiswa as $row):?>
+        <?php $i=1 ?>
+        <!-- kita buat contoh data static -->
+        <?php foreach ($mahasiswa as $row):?>
         <tr>
             <td><?= $i; ?></td>
             <td><?= $row["Nama"]; ?></td>
@@ -35,11 +35,11 @@ $mahasiswa=query("SELECT * FROM mahasiswa")
             <td> <img src="image/<?php echo $row["Gambar"]; ?>" alt="" height="100" width="100" srcset=""></td>
             <td>
                 <a href="">Edit</a>
-                <a href="">Hapus</a>
+                <a href="hapus.php?id=<?php echo $row["id"]; ?>"onclick="return confirm('Apakah data ini akan dihapus?')">Hapus</a>
             </td>
         </tr>
-<?php $i++ ?>
-<?php endforeach;?>
+    <?php $i++ ?>
+    <?php endforeach;?>
     </table>
 </body>
 </html>
